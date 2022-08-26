@@ -1,4 +1,4 @@
-package ru.someboy.springcource.models;
+package ru.someboy.springcourse.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
