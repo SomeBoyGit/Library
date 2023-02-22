@@ -2,18 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Все люди</title>
+    <title>Страница со списком всех людей</title>
 </head>
 <body>
+
+<form th:action="@{/books}">
+    <input type="submit" value="Войти в библиотеку">
+</form>
+<br/>
+<hr/>
+
 <div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getPersonId()})}"
-       th:text="${person.getName() + ' ,' + person.getYearOfBirth()}">user</a>
+    <a th:href="@{/people/{person_id}(person_id=${person.getPersonId()})}"
+       th:text="${person.getFullName() + ' ,' + person.getYearOfBirth()}">user</a>
 </div>
 
 <br/>
 <hr/>
-
-<a href="/people/new">Добавить человека</a>
+<form th:action="@{/people/new}">
+    <input type="submit" value="Добавить клиента">
+</form>
 
 </body>
 </html>

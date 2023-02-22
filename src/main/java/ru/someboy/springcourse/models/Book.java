@@ -8,32 +8,36 @@ import javax.validation.constraints.Size;
  * @author Slipets Artem
  */
 public class Book {
-    private int book_id;
+    private int bookId;
 
-    @NotEmpty(message = "Title should not be empty")
-    @Size(min = 2, max = 50, message = "Title should be between 2 and 50 characters")
+    @NotEmpty(message = "Поле 'Название книги' не должно быть пустым")
+    @Size(min = 2, max = 100, message = "Поле 'Название книги' должно быть от 2 до 100 символов длиной")
     private String title;
 
-    @NotEmpty(message = "Author should not be empty")
-    @Size(min = 2, max = 30, message = "Author should be between 2 and 30 characters")
+    @NotEmpty(message = "Поле 'ФИО' не должно быть пустым")
+    @Size(min = 2, max = 100, message = "Поле 'ФИО' автора должно быть от 2 до 100 символов длиной")
     private String author;
 
-    @Min(value = 0, message = "year of birth should be greater than 0")
-    private int yearOfPublication;
+    @Min(value = 1500, message = "Поле 'Дата публикации книги' должно быть не меньше 1500 года")
+    private int year;
 
-    public Book(int book_id, String title, String author, int yearOfPublication) {
-        this.book_id = book_id;
+    //Пустой конструктор нужен для Spring, аннотация ModelAttribute
+    public Book() {
+
+    }
+
+    public Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
-        this.yearOfPublication = yearOfPublication;
+        this.year = year;
     }
 
-    public int getBook_id() {
-        return book_id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -52,11 +56,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getYearOfPublication() {
-        return yearOfPublication;
+    public int getYear() {
+        return year;
     }
 
-    public void setYearOfPublication(int yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
+    public void setYear(int year) {
+        this.year = year;
     }
 }
